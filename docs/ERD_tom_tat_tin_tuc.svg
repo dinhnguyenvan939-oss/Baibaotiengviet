@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker>
+    <style>
+      .bg{fill:#f8fafc}.title{font:700 30px Arial,sans-serif;fill:#0f172a}.sub{font:16px Arial,sans-serif;fill:#475569}
+      .box{fill:#fff;stroke:#1d4ed8;stroke-width:2;rx:12}.head{fill:#dbeafe}.entity{font:700 20px Arial,sans-serif;fill:#1e3a8a}
+      .field{font:16px Consolas,monospace;fill:#1f2937}.key{font-weight:700;fill:#7c3aed}.line{stroke:#475569;stroke-width:2.5;fill:none;marker-end:url(#arrow)}
+      .cardinality{font:700 16px Arial,sans-serif;fill:#334155}.note{font:14px Arial,sans-serif;fill:#475569}
+    </style>
+  </defs>
+  <rect class="bg" width="1280" height="720"/>
+  <text class="title" x="640" y="55" text-anchor="middle">ERD — Hệ thống tóm tắt tin tức tiếng Việt</text>
+  <text class="sub" x="640" y="84" text-anchor="middle">Phạm vi dữ liệu thử nghiệm: lưu bài báo, các lần tóm tắt và kết quả theo từng đoạn</text>
+
+  <!-- ARTICLE -->
+  <rect class="box" x="65" y="170" width="340" height="390"/>
+  <path class="head" d="M77 170 H393 Q405 170 405 182 V222 H65 V182 Q65 170 77 170 Z"/>
+  <text class="entity" x="235" y="203" text-anchor="middle">ARTICLE (Bài báo)</text>
+  <text class="field" x="90" y="260"><tspan class="key">PK</tspan><tspan>  article_id</tspan></text>
+  <text class="field" x="90" y="300">title</text>
+  <text class="field" x="90" y="340">source_url  (có thể trống)</text>
+  <text class="field" x="90" y="380">input_type  (text / URL / PDF)</text>
+  <text class="field" x="90" y="420">original_text</text>
+  <text class="field" x="90" y="460">source_name  (tên báo)</text>
+  <text class="field" x="90" y="500">created_at</text>
+
+  <!-- SUMMARY -->
+  <rect class="box" x="470" y="170" width="350" height="390"/>
+  <path class="head" d="M482 170 H808 Q820 170 820 182 V222 H470 V182 Q470 170 482 170 Z"/>
+  <text class="entity" x="645" y="203" text-anchor="middle">SUMMARY (Lần tóm tắt)</text>
+  <text class="field" x="495" y="260"><tspan class="key">PK</tspan><tspan>  summary_id</tspan></text>
+  <text class="field" x="495" y="300"><tspan class="key">FK</tspan><tspan>  article_id</tspan></text>
+  <text class="field" x="495" y="340">model_name</text>
+  <text class="field" x="495" y="380">summary_text</text>
+  <text class="field" x="495" y="420">summary_style</text>
+  <text class="field" x="495" y="460">input_tokens</text>
+  <text class="field" x="495" y="500">processing_seconds</text>
+  <text class="field" x="495" y="540">created_at</text>
+
+  <!-- CHUNK -->
+  <rect class="box" x="885" y="170" width="340" height="390"/>
+  <path class="head" d="M897 170 H1213 Q1225 170 1225 182 V222 H885 V182 Q885 170 897 170 Z"/>
+  <text class="entity" x="1055" y="203" text-anchor="middle">SUMMARY_CHUNK (Đoạn)</text>
+  <text class="field" x="910" y="260"><tspan class="key">PK</tspan><tspan>  chunk_id</tspan></text>
+  <text class="field" x="910" y="300"><tspan class="key">FK</tspan><tspan>  summary_id</tspan></text>
+  <text class="field" x="910" y="340">chunk_order</text>
+  <text class="field" x="910" y="380">chunk_text</text>
+  <text class="field" x="910" y="420">chunk_summary</text>
+  <text class="field" x="910" y="460">token_count</text>
+  <text class="field" x="910" y="500">created_at</text>
+
+  <path class="line" d="M405 340 H460"/>
+  <text class="cardinality" x="415" y="324">1</text><text class="cardinality" x="448" y="324">N</text>
+  <path class="line" d="M820 340 H875"/>
+  <text class="cardinality" x="830" y="324">1</text><text class="cardinality" x="863" y="324">N</text>
+
+  <text class="note" x="640" y="620" text-anchor="middle">Một bài báo có thể được tóm tắt nhiều lần; một lần tóm tắt có thể gồm nhiều đoạn.</text>
+  <text class="note" x="640" y="648" text-anchor="middle">Nếu giai đoạn thử nghiệm chỉ chạy trên Colab và chưa lưu dữ liệu, sơ đồ này là thiết kế dự kiến cho giai đoạn xây dựng ứng dụng.</text>
+</svg>

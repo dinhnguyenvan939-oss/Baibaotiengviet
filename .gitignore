@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyd
+.venv/
+venv/
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Model weights and caches
+*.safetensors
+*.bin
+pytorch_model*
+.cache/
+cache/
+huggingface_cache/
+
+# Notebook runtime outputs / temporary files
+.ipynb_checkpoints/
+*.tmp
+*.log
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
